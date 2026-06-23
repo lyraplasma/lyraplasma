@@ -1,7 +1,7 @@
 
 * Hi there, I'm **Lyra**<sup>(>u<)</sup> *just Lyra*
 
-I've spending my time automating files in my two local servers (because I write a lot of markdowns and now org files:) ) I'm using python3 to solve those tasks. And currently learning Go---because of the adorable mascot :3 :3 :3
+I've spending my time on writing scripts and experimenting on my on-premise servers (because I write a lot of markdowns and now org files:) ) I'm using python3 to solve those tasks. And currently learning Go---because of the adorable mascot :3 :3 :3
 
 OCaml is fun :)))
 
