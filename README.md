@@ -6,7 +6,7 @@ I've spending my time on writing scripts and experimenting on my on-premise serv
 OCaml is fun :)))
 
 <p align="center">
-  <a href="https://youtu.be/lpiB2wMc49g?si=GyAu5pmePrSrZCxJ">
-  <img src="https://api.boot.dev/v1/users/public/8ec6e8c0-8d3f-4daa-a1c4-57a740962508/thumbnail" >
+  <a href="https://discord.gg/cXtsMHswQ5">
+  <img src="https://api.boot.dev/v1/users/public/8ec6e8c0-8d3f-4daa-a1c4-57a740962508/thumbnail" alt="wanna join my discord server? :3">
   </a>
 </p>
