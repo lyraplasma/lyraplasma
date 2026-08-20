@@ -90,3 +90,10 @@ sub greet {
     return "Good $time, $person!\n";
 }
 print greet("User B", "Evening");
+
+my $daily_variable_1 = "hello hello hello???";
+print $daily_variable_1."\n";
+my @another_group_of_works = (3,4,32,3,4,3,"string too?", "yes");
+foreach(@another_group_of_works){
+    print "\t\t\t".$_."\n";
+}
