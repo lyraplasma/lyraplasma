@@ -1,2 +1,28 @@
 * what's this??
 a collection of weird code snippets ive found
+
+** uh?
+i *learned* that haskell is lazy
+~yeah~
+- item one
+  - sub-item 1
+  - sub-item 2
+- item two    
+
+=C-c C-e h o=
+I've also learn this org-mode thingey? looks bloat to me tho
+
+#+TITLE: My Math Notes
+
+* Algebra
+
+** Quadratic Formula
+The roots of ax^2 + bx + c = 0 are:
+
+\[
+x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+\]
+
+* TODO Practice problems
+- [ ] Solve 3x^2 + 5x - 2 = 0
+- [ ] Solve x^2 - 4x + 4 = 0
