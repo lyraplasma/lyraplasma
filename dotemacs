@@ -1,0 +1,48 @@
+(setq inhibit-startup-screen t
+      ring-bell-function 'ignore)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1) 
+
+(unless (display-graphic-p)
+  (set-face-background 'default "unspecified"))
+
+
+(electric-pair-mode 1)
+(global-display-line-numbers-mode 1)
+(recentf-mode 1)
+(delete-selection-mode 1)
+(which-key-mode 1)
+(fido-vertical-mode 1)
+(global-auto-revert-mode 1)
+(setq backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
+
+(setq next-line-add-newlines t)
+
+;;; M-x windmode-default-binding thingey??
+;; ^^^^^^^ nope you're nolonger need it :))
+;;; but check the documentation if you collide some shortcut you'll need in the future
+(global-set-key (kbd "C-c j") #'windmove-left)
+(global-set-key (kbd "C-c l") #'windmove-right)
+(global-set-key (kbd "C-c i") #'windmove-up)
+(global-set-key (kbd "C-c k") #'windmove-down)
+;;@note-> M-x eval-buffer 
+;;(global-set-key (kbd "C-c C-c") 'compile) ;;i accidentally memorized it...
+(global-set-key (kbd "C-h") 'delete-backward-char)
+;; M-x set-variable RET mode-line-format RET nil
+;; M-x fringe-mode RET no-fringe
+;; tab motions
+;;C-x t 2    -- New tab
+;;C-x t 0    -- Close current tab
+;;C-x t o    -- Next tab
+;;C-x t O    -- Previous tab
+;;C-x t 1    -- Keep current, close rest
+;;C-x t r    -- Rename tab
+;; tab-bar-toggle-frame?
+;; vvvvvvvvvvvv no line bloats
+(setq-default header-line-format nil)
+(setq-default mode-line-format nil)
+(fringe-mode 0)
+
+
+
