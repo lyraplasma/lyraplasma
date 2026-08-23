@@ -1,4 +1,5 @@
 import Data.Char
+import Data.List
 import Text.Printf
 -- assumption: monads == design pattern.. of what?
 greet_this_user :: String -> String
@@ -112,8 +113,10 @@ referential transparency -> guaranteed return, same result
   print ("hello" !! 0)
   print (uhh "hello" 0)
   print (uhh "uhhh" 0)
-  
-  
+  first_find_zero_index "0"
+  printLast [1,2,3,4,6]
+  print (doubleMe (doubleMe (doubleMe (doubleMe (doubleMe 42)))))
+  print (ftfn 1 5 9 1 10)
 
 -- looks like i can write a function below of the main
 -- truly a humanity's efforts
@@ -123,4 +126,50 @@ b = [[1,2,3,4], [5,5], [1,2,2,2], [3,3,3]]
 b ++ [[1,2,3,4]]
 [5,4,5] : b
 b !! 2
+
+you can compare too with arrays
+[1,2,3] == [2]
+
+list have #head #tail #last #init #length #reverse
+#maximum #minimum #product
+
+as "hewoo" is just a syntactic sugar of ['h','e','w','o','o']
+this is possible
+length "hewoo"
 -}
+
+first_find_zero_index str = print (str !! 0)
+second_find_zero_index str = print (str !! 1)
+print_sum arr = print (sum arr)
+printTail arr = print (tail arr)
+printLast arr = print (last arr)
+printLength arr = print (length arr)
+dp = print (doubleMe (doubleMe (doubleMe (doubleMe (doubleMe 42)))))
+cursep = print (doubleMe (doubleMe (doubleMe (doubleMe (doubleMe 42)))))
+cursed = (doubleMe (doubleMe (doubleMe (doubleMe (doubleMe 42)))))
+bcursed = (filter odd [1..cursed]) ++ (filter even [1..cursed])
+only_odds a b = filter odd [a..b]
+only_evens a b = filter even [a..b]
+times_fives = print [5, 10..500]
+countdown = [10,9..1]
+cooldown n = [n, n-1..1]
+nines = [0.1, 0.3..1]
+lazy_hs i32_n = take i32_n [13,26..]
+minmax_lazy_hs = lazy_hs (maximum (lazy_hs (minimum (lazy_hs 10))))
+int_take_cy = take (length (take 10 (cycle [1..3]))) (cycle [1..3])
+str_take_cycl = take (length (take 10 (cycle ['a'..'c']))) (cycle ['a'..'z'])
+repeat_w str times = take times (cycle str)
+-- cycle "w" means death
+repeatr_ str limit = take limit (repeat str)
+worm signature population = replicate population signature
+-- list comprhsion thingey S = { 2 * x | x e N, x <= 10}
+table_ plcmnt strt end = [x * plcmnt | x <- [strt..end]]
+-- -----------------------------------vvvvvvvvvv predicate thingey
+table_cp idx strt nd = [y * idx | y <- [strt..nd]]
+-- --------------------^^^^^^^^^ function output
+-- (take 10 [2,4..]) == ([y*2 | y <- [1..10]]) list comprhnsion simlr to set's
+boomBangs xs = [ if x < 10 then "boom" else "bang" | x <- xs, odd x]
+fltr_thrth_fith_ninths = [x | x <- [10..20], x /= 13, x /= 15, x /= 19]
+ftfn exl1 exl2 exl3 idx endx = [x | x <- [idx..endx], x /= exl1, x /= exl2, x /= exl3]
+bangs_boom arr = [ if a < 12 then "bangs" else "boom" | a <- arr, odd a]
+arr_mult set_1 set_2 x y = [ a*b+x*y `div` 2 | a <- set_1, b <- set_2, a*y  90]
