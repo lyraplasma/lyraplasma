@@ -26,3 +26,7 @@ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 * TODO Practice problems
 - [ ] Solve 3x^2 + 5x - 2 = 0
 - [ ] Solve x^2 - 4x + 4 = 0
+
+
+** running cs
+mcs file.cs && mono file.exe
