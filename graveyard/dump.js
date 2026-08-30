@@ -105,6 +105,7 @@ const fizzbuzz = (end) => {
 }
 //fizzbuzz(42);
 */
+/*
 try {
     let a = undefinedvalue;
 } catch (e) {
@@ -140,3 +141,86 @@ catch (e) {
     console.log(e.name);
     console.log(e.stack);
 }
+*/
+/*
+function upcase(str) { return str.toUpperCase(); }
+const cats = ["Leopard", "Serval", "Jaguar", "Tiger", "Caracal", "Lion"];
+//for (const cat of cats) { console.log(cat); }
+for (const cat of cats.map(upcase)) { console.log(cat); }
+console.log(
+    cats.filter(s => s.startsWith("L")));
+//	s.startsWith("L")
+//    }));
+const cats = ["Leopard", "Serval", "Jaguar", "Tiger", "Caracal", "Lion"];
+*/
+//for (const cat of cats) { console.log(cat); }
+//for (const item of ["ribbon", "ribbon2", "ribbon3", "chocolate1", "chocolate2"]) {
+//    console.log(item); }
+//console.log(
+//    cats.map((s) => s.toUpperCase()));
+//for (const cat of cats.map((s) => s.toUpperCase())) { console.log(cat); }
+/*
+const filtered = cats.filter((c) => c.startsWith("L"));
+console.log(filtered);
+const items = ["ribbon", "ribbon2", "ribbon3", "chocolate1", "chocolate2"];
+console.log(items.filter((i) => i.startsWith("r")));
+const square = () => {
+    for (let i = 1; i < 10; i++) {
+	console.log(`${i} x ${i} = ${i * i}`);
+    }
+};
+//square();
+let myFavoriteCats = "My cats are called ";
+for (let i = 0; i < cats.length; i++) {
+    if (i === cats.length - 1) {
+	myFavoriteCats += `and ${cats[i]}.`;
+    } else {
+	myFavoriteCats += `${cats[i]}, `;
+    }
+}
+console.log(myFavoriteCats);
+let __str = "This string";
+console.log(__str.replace("This", "That"));
+function hello(name = "User") {
+    console.log(`Hello ${name}`)}
+hello();
+(function () { console.log("hello"); });
+
+const originals = [1,2,3,4,5];
+console.log(originals.map(x => x * 2));
+*/
+//Array.from({length: 50}, (_,i) => i + 1);
+//Array.from({length: 100}, (_,i) => i + 1);
+/*
+const words = ["spray", "elite", "exuberant", "destruction", "present"];
+const result = words.filter((word) => word.length > 6);
+console.log(result);
+
+console.log(
+    Array.from({length: 50},
+	       (_,i) => i + 1)
+	.filter(n => n % 2 == 0)
+	.reduce((a,c) => a + c, 0)
+);
+
+const names = ["JC63", "Bob123", "Ursula38", "Ben96"];
+const greatIDs = names
+      .map((name) => parseInt(name.match(/\d+/)[0], 10))
+      .filter((id, idx, arr) => {
+	  if (idx > 0 && id <= arr[idx - 1]) return false; 
+      });
+*/
+const cats = ["Pete", "Biggles", "Jasmine"];
+let myFavoriteCats = "My cats are called ";
+let i = 0;
+
+while (i < cats.length) {
+    if (i === cats.length - 1) {
+	myFavoriteCats += `and ${cats[i]}.`;
+    } else {
+	myFavoriteCats += `${cats[i]}, `;
+    }
+    i++;
+}
+
+console.log(myFavoriteCats);
