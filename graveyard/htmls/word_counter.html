@@ -1,0 +1,52 @@
+<!DOCTYPE html><html><head></head><body><script>
+      const label = document.createElement("label"),
+            textarea = document.createElement("textarea"),
+            div = document.createElement("div");
+      label.setAttribute("for", "text");
+      label.textContent = "Enter some text below:";
+      textarea.setAttribute("id", "text")
+      textarea.setAttribute("rows", "10")
+      textarea.setAttribute("cols", "60")
+      div.setAttribute("id", "stat")
+      div.textContent = "You've written 0 words and 0 characters."
+      document.body.appendChild(label);
+      document.body.appendChild(textarea);
+      document.body.appendChild(div);
+
+      class WordCounter {
+	constructor(input_text) {
+	  this.input_text = input_text;
+	  this.input_text.addEventListener("input", () => {
+	    this.count();
+	  });
+	}
+	count(){
+	  let word_stat = this.get_word_stat(this.input_text.value.trim());
+	  this.emit_event(word_stat);
+	}
+	get_word_stat(str) {
+	  let matches = str.match(/\S+/g);
+	  return {
+	    characters: str.length,
+	    words: matches ? matches.length : 0,
+	  };
+	}
+	emit_event(word_stat) {
+	  let count_event = new CustomEvent("count", {
+	    bubbles: true,
+	    cancelable: true,
+	    detail: { word_stat }
+	  });
+	  this.input_text.dispatchEvent(count_event);
+	}
+      }
+      const input_text = document.getElementById("text"),
+            stat_el = document.getElementById("stat");
+      new WordCounter(input_text);
+      const render = (event) => {
+	stat_el.innerHTML = `<p>
+You've written <span class="highlight">${event.detail.word_stat.words} words</span>
+and <span class="highlight">${event.detail.word_stat.characters} characters</span>.</p>`;
+      }
+      input_text.addEventListener("count", render);
+</script></body></html>

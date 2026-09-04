@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .highlight { background-color: gold; color: white; padding: 2px; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="https://github.com/lyraplasma.png" width="150" style="border-radius: 100%;">
+      <h1>Wikipedia Search</h1>
+      <input type="text" name="search_item" id="search_item" placeholder="Search knowledge...">
+    </header>
+      <main id="search_result"></main>
+      <script>
+	let timeout_id;
+	const search_item_el = document.getElementById("search_item"),
+	      search_result_el = document.getElementById("search_result");
+	const strip_html = (html) => {
+	  let div = document.createElement("div");
+	  div.html = html;
+	  return div.textContent;
+	};
+	
+	const highlight = (str, keyword, className= "highlight") => {
+	  const hl = `<span class="${className}">${keyword}</span>`;
+	  return str.replace(new RegExp(keyword, 'gi'), hl);
+	};
+const generate_html = (results, search_term) => {
+	  return results
+	    .map(result => {
+	      const title = highlight(strip_html(result.title), search_term),
+		    snippet = highlight(strip_html(result.snippet), search_term);
+	      return `
+		<article>
+		  <a href="https://en.wikipedia.org/?curid=${result.pageid}">
+		    <h2>${title}</h2>
+		</a>
+		<div class="summary">${snippet}...</div>
+		</article>
+		`;
+	    }).join("");
+}
+	
+	const debounce = (fn, delay=500) => {
+	  let timeout_id;
+	  return (...args) => {
+	    if (timeout_id) {
+	      clearTimeout(timeout_id);
+	    }
+	    timeout_id = setTimeout(() => {
+	      fn.apply(null, args);
+	    }, delay);
+	  }
+	}
+	
+	const search = debounce(async (search_term) => {
+	  if (!search_term) {
+	    search_result_el.innerHTML = "";
+	    return;
+	  }
+	  try {
+	    const url = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info|extracts&inprop=url&utf8=&format=json&origin=*&srlimit=10&srsearch=${search_term}`,
+	          response = await fetch(url),
+	          search_results = await response.json(),
+	          search_result_html = generate_html(search_results.query.search, search_term);
+	    search_result_el.innerHTML = search_result_html;
+
+	  } catch (error) { console.log(error); }
+	});
+	search_item_el.focus();
+	search_item_el.addEventListener("input", (event) => {
+	  search(event.target.value);
+	});
+
+	
+    </script>
+  </body>
+</html>

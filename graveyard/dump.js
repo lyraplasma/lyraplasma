@@ -210,6 +210,7 @@ const greatIDs = names
 	  if (idx > 0 && id <= arr[idx - 1]) return false; 
       });
 */
+/*
 const cats = ["Pete", "Biggles", "Jasmine"];
 let myFavoriteCats = "My cats are called ";
 let i = 0;
@@ -224,3 +225,164 @@ while (i < cats.length) {
 }
 
 console.log(myFavoriteCats);
+    const results = document.getElementById("results"),
+	  calculate_btn = document.getElementById("calculate_btn"),
+	  clear_btn = document.getElementById("clear_btn");
+    
+    const gen_blobs = document.getElementById("gen_blobs"),
+	  canvas_blobs = document.getElementById("canvas_blobs");
+    const ctx_2d = canvas_blobs.getContext("2d");
+    canvas_blobs.width = document.documentElement.clientWidth;
+    canvas_blobs.height = document.documentElement.clientHeight;
+
+    const rand = (n) => Math.floor(Math.random() * n);
+    const draw_blobs = () => {
+	ctx_2d.clearRect(0, 0, canvas_blobs.width, canvas_blobs.height);
+	for (let i = 0; i < 100; i++) {
+	  ctx_2d.beginPath();
+	  ctx_2d.fillStyle = `rgb(${rand(254)} ${rand(254)} ${rand(254)} / 50%)`;
+	  ctx_2d.arc(
+	      rand(canvas_blobs.width),
+	      rand(canvas_blobs.height),
+	      rand(50), 0, 2 * Math.PI);
+	  ctx_2d.fill();
+	}
+    };
+    gen_blobs.addEventListener("click", draw_blobs);
+    calculate_btn.addEventListener("click", () => {
+	for (let i = 1; i <= 10; i++) {
+	    const col = `${i} x ${i} = ${i * i}`;
+	    results.textContent += `${col}\n`;
+	}
+	results.textContent += "\nFinished!\n\n";
+    });
+    clear_btn.addEventListener("click", () => (results.textContent = ""));
+    const monitor_input = document.getElementById("monitor_input"),
+          monitor_output = document.getElementById("monitor_output");
+    monitor_input.addEventListener("keydown", (e) => {
+        monitor_output.textContent = `You type: ${e.key}`;
+	results.textContent = `${e.code} ${e.target.value}`;
+	console.log(`what? ${e.key}`);
+	console.error(`${e}`);
+	});
+
+	const contacts = [ "Chis:2343223"
+	,"Sar:2343243232", "Ball:2343224","Mary:92384329", "Dia:92384723984"];
+	const search_bar = document.getElementById("search"),
+	search_btn = document.getElementById("search_btn"),
+	para = document.getElementById("sp");
+	search_btn.addEventListener("click", () => {
+	const search_name = search_bar.value.toLowerCase();
+	search_bar.value = "";
+	search_bar.focus();
+	para.textContent = "";
+	for (const contact of contacts) {
+	const split_contact = contact.split(":");
+	if (split_contact[0].toLowerCase() == search_name) {
+	para.textContent = `${split_contact[0]}'s number is ${split_contact[1]}.`;
+	break;
+	}
+	}
+	if (para.textContent === "") { para.textContent = "Contact not found."; }
+	});
+    const num_input = document.getElementById("number_"),
+    output_int = document.getElementById("output_int"),
+    gen_int_btn = document.getElementById("gen_int_btn");
+    gen_int_btn.addEventListener("click", () => {
+    output_int.textContent = "Output: ";
+    input_sav = num_input.value;
+    num_input.value = "";
+    num_input.focus();
+    for (let i = 1; i <= input_sav; i++) {
+			 let sqroot = Math.sqrt(i);
+			 if (Math.floor(sqroot) !== sqroot) {
+			 continue;
+			 }
+			 output_int.textContent += `${i}`;
+			 }
+    });
+*/
+/*
+let users = [
+    {id: 1, name: "A"},
+    {id: 2, name: "B"},
+    {id: 3, name: "C"}
+];
+let items = [
+    {id: 1, name: "Ribbon"},
+    {id: 2, name: "Key"},
+    {id: 3, name: "Simple Potion"}
+];
+console.log(
+    users.find(i => i.id === 3)    
+);
+console.log(
+    items.find(i => i.id === 3)    
+);
+
+Object.fromEntries(
+    Array.from({length: 10}, (_,i) => [
+	i, Array.from({length: 10}, () => String.fromCharCode(97 + ~~(Math.random() * 26))).join("")
+    ])
+)
+
+    Array.from({length:10},(_,i)=>({id:i,name:Array.from({length:7},()=>String.fromCharCode(97+~~(Math.random()*26))).join('')}))
+
+const names = Array.from({length: 20}, (_, i) => ({
+    id: i,
+    name: Array.from({length: 7}, () => String.fromCharCode(97 + ~~(Math.random() * 26))).join("").replace(/^./, match => match.toUpperCase())
+}))
+/*
+console.log(["Fsdsdkfj", "sldkfj", "sldkjsldsflkj", "lwekj"].map(i => i.length));
+const ns = Array.from({length: 20}, () => ~~(Math.random() * 26));
+console.log(ns);
+ns.sort((a,b) => {
+    if (a > b) return 1;
+    if (a == b) return 0;
+    if (a < b) return -1;
+});
+console.log(ns);
+*/
+/*
+let countries = ["Osdfj", "Feliwf", "WOifw"];
+console.log(countries.sort(
+    (a,b) => a.localeCompare(b)))
+let arrrrr = ["Biblo", "Gangflf", "Masguz"].join(";");
+console.log([1,11,111,1111].reduce((a,c) => a + c, 0));
+"background-color".split("-").map((w, i) => i === 0 ? w : w[0].toUpperCase() + w.slice(1)).join("");
+const a = ["a", "b", "c"];
+const b = a.slice().sort();
+*/
+/*
+function Calculator() {
+    this.methods = {
+	"-": (a, b) => a - b,
+	"+": (a, b) => a + b,
+	"*": (a, b) => a * b
+    }
+    this.calculate = function(str) {
+	let split = str.split(" "),
+	    a = +split[0],
+	    op = split[1],
+	    b = +split[2];
+
+	if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+	    return NaN;
+	}
+	return this.methods[op](a, b);
+    };
+    this.addMethod = function(name, func) {
+	this.methods[name] = func;
+    };
+}
+*/
+/*
+let john = { name: "John", age: 25 };
+let pete = { name: "Pete", age: 30};
+let mary = { name: "Mary", age: 28};
+let users = [ john, pete, mary];
+let names = users.map(i => i["name"]).join(",");
+*/
+function sum_of_tripled_evens(arr) {
+    arr.filter(x => x % 2 == 0).map(x => x * 3).reduce((a,c) => a + c)
+}

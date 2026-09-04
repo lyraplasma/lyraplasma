@@ -28,6 +28,9 @@
 ;;    (map (lambda (n) (* n n))_)
 ;    (filter even? _)
 ;    (foldl + 0 _))
+(display (*
 (for/sum ([n (in-range 1 11)])
 	 (let ([squared (* n n)])
 	   (if (even? squared) squared 0)))
+
+2))

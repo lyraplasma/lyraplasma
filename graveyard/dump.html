@@ -8,7 +8,7 @@
   </head>
   <body>
 <!-- 
-    <div>
+     <div>
       <label for="number_">Enter number: </label>
       <input id="number_" type="number" />
       <button id="gen_int_btn">Generate integer squares</button>
@@ -30,88 +30,33 @@
 <button class="bloattons">No. Me. Press Me!</button>    
 <button class="bloattons">It's-a Press Me!</button>
 -->
-<button id="gen_blobs">Generate!</button>
+<!-- <button id="gen_blobs">Generate!</button>
 <canvas id="canvas_blobs"></canvas>
-
+-->
+<div>
+  <input id="countdown_input" type="number" placeholder="enter download" />
+  <button id="countdown_btn">Countdown</button>
+  <p id="countdown_output"></p>
+</div>
+<div>
+  <table>
+    <thead>
+      <tr>
+<th>Admitted</th>
+<th>Refused</th>	
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+<td><p id="admitted"></p></td>
+<td><p id="refused"></p></td>
+      </tr>      
+</tbody>      
+</table>    
+</div>  
   </body>
 <!--   <script type="module" src="./dump.js"></script> -->
-  <script>
-    const results = document.getElementById("results"),
-	  calculate_btn = document.getElementById("calculate_btn"),
-	  clear_btn = document.getElementById("clear_btn");
-    
-    const gen_blobs = document.getElementById("gen_blobs"),
-	  canvas_blobs = document.getElementById("canvas_blobs");
-    const ctx_2d = canvas_blobs.getContext("2d");
-    canvas_blobs.width = document.documentElement.clientWidth;
-    canvas_blobs.height = document.documentElement.clientHeight;
-
-    const rand = (n) => Math.floor(Math.random() * n);
-    const draw_blobs = () => {
-	ctx_2d.clearRect(0, 0, canvas_blobs.width, canvas_blobs.height);
-	for (let i = 0; i < 100; i++) {
-	  ctx_2d.beginPath();
-	  ctx_2d.fillStyle = `rgb(${rand(254)} ${rand(254)} ${rand(254)} / 50%)`;
-	  ctx_2d.arc(
-	      rand(canvas_blobs.width),
-	      rand(canvas_blobs.height),
-	      rand(50), 0, 2 * Math.PI);
-	  ctx_2d.fill();
-	}
-    };
-    gen_blobs.addEventListener("click", draw_blobs);
-    calculate_btn.addEventListener("click", () => {
-	for (let i = 1; i <= 10; i++) {
-	    const col = `${i} x ${i} = ${i * i}`;
-	    results.textContent += `${col}\n`;
-	}
-	results.textContent += "\nFinished!\n\n";
-    });
-    clear_btn.addEventListener("click", () => (results.textContent = ""));
-    const monitor_input = document.getElementById("monitor_input"),
-          monitor_output = document.getElementById("monitor_output");
-    monitor_input.addEventListener("keydown", (e) => {
-        monitor_output.textContent = `You type: ${e.key}`;
-	results.textContent = `${e.code} ${e.target.value}`;
-	console.log(`what? ${e.key}`);
-	console.error(`${e}`);
-	});
-
-	const contacts = [ "Chis:2343223"
-	,"Sar:2343243232", "Ball:2343224","Mary:92384329", "Dia:92384723984"];
-	const search_bar = document.getElementById("search"),
-	search_btn = document.getElementById("search_btn"),
-	para = document.getElementById("sp");
-	search_btn.addEventListener("click", () => {
-	const search_name = search_bar.value.toLowerCase();
-	search_bar.value = "";
-	search_bar.focus();
-	para.textContent = "";
-	for (const contact of contacts) {
-	const split_contact = contact.split(":");
-	if (split_contact[0].toLowerCase() == search_name) {
-	para.textContent = `${split_contact[0]}'s number is ${split_contact[1]}.`;
-	break;
-	}
-	}
-	if (para.textContent === "") { para.textContent = "Contact not found."; }
-	});
-    const num_input = document.getElementById("number_"),
-    output_int = document.getElementById("output_int"),
-    gen_int_btn = document.getElementById("gen_int_btn");
-    gen_int_btn.addEventListener("click", () => {
-    output_int.textContent = "Output: ";
-    input_sav = num_input.value;
-    num_input.value = "";
-    num_input.focus();
-    for (let i = 1; i <= input_sav; i++) {
-			 let sqroot = Math.sqrt(i);
-			 if (Math.floor(sqroot) !== sqroot) {
-			 continue;
-			 }
-			 output_int.textContent += `${i}`;
-			 }
-    });
+  <script src="./html.js"></script>
   </script>
 </html>
 
